@@ -1,0 +1,24 @@
+syntax = 'proto3';
+
+enum ChannelOrder {
+  CHANNEL_ORDER_NONE = 0;
+  CHANNEL_ORDER_ORDERED = 1;
+  CHANNEL_ORDER_UNORDERED = 2;
+}
+
+enum ChannelState {
+  CHANNEL_STATE_NONE = 0;
+  CHANNEL_STATE_INIT = 1;
+  CHANNEL_STATE_TRYOPEN = 2;
+  CHANNEL_STATE_OPEN = 3;
+  CHANNEL_STATE_CLOSED = 4;
+}
+
+message ChannelEnd {
+  ChannelState state = 1;
+  ChannelOrder ordering = 2;
+  string counterpartyPortIdentifier = 3;
+  string counterpartyChannelIdentifier = 4;
+  repeated string connectionHops = 5;
+  string version = 6;
+} 
